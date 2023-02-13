@@ -57,7 +57,22 @@ export class SignupComponent {
   });
 
   submit() {
-    console.log(this.signupForm.value);
+
+    console.log(this.signupForm.value)
+
+    let headers1=new HttpHeaders({
+      'content-Type': 'application/json'
+    })
+    let obj={
+      username:'admin100',
+      email_id:this.signupForm.value.email,
+      password:this.signupForm.value.password
+    }
+    this.httpclient.post("http://localhost:7600/reg",obj,{headers:headers1}).subscribe(response=>{
+      console.log(response)
+    })
+    
+    
 
     let headers1 = new HttpHeaders({
       'content-Type': 'application/json',
